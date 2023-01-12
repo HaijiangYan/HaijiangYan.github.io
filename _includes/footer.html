@@ -1,0 +1,13 @@
+<footer class="footer">
+  <p>&copy; {{site.user_name}}</p>
+  <p>Built with Webpack, Jekyll and <i class="fas fa-heart love"></i> by <a data-press-delay href="https://github.com/mythemeway" title="Come over">MTW</a>.<br><a data-press-delay href="https://sitdisch.github.io#mythemeway" title="Go there">Source of this demo</a>.</p>
+</footer>
+
+<!-- INCLUDE THE NECESSARY HTML FILES FOR ALL LAYOUTS -->  
+{% include navbar.html %}
+
+<!-- INCLUDE THE NECESSARY JS FILES FOR ALL LAYOUTS -->  
+<script src="{{ '/assets/lib_c/jquery/dist/jquery.min.js' | prepend: site.baseurl }}" crossorigin="anonymous"></script>
+<script src="{{ '/assets/js/main.bundle.min.js' | prepend: site.baseurl }}" crossorigin="anonymous"></script>
+<script src="{{ '/assets/js/canvas.bundle.min.js' | prepend: site.baseurl }}" crossorigin="anonymous"></script>
+<script src="{{ '/assets/lib_c/bootstrap/dist/js/bootstrap.bundle.min.js' | prepend: site.baseurl }}" crossorigin="anonymous"></script>
