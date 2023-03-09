@@ -2,7 +2,18 @@
 layout: default
 ---
 
+# Research Interests
 
+As for me, 
+
+* Bayesian modelling on human representation learning and decision-making
+> This is a blockquote following a header `Markov Chain Monte Carlo`.
+
+* Human-like artificial intelligence
+> This is a blockquote following a header.
+
+* Bayesian deep learning
+> Waiting for updating
 
 Text can be **bold**, _italic_, ~~strikethrough~~ or `keyword`.
 
