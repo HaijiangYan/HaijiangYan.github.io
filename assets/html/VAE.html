@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VAE</title>
+  <link rel="stylesheet" type="text/css" href="../../css/styles.css">
+  <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+<body>
+  <header>
+    <div class="top">
+      <center>
+      <ul class="menu">
+        <li class="first"><a href="https://haijiangyan.github.io/">&LeftArrow; Return Home</a></li>
+      </ul>
+      </center>
+    </div>
+  </header>
+
+  <main>
+
+      <div>
+
+        <h1>Varitional Auto-Encoder</h1>
+        <p class="signature">25/July/2023, Haijiang</p>
+
+        <p class="question">&bull; Auto-Encoder</p>
+        <p>Auto-Encoder (AE) is an un-supervised Machine Learning algorithm in form of Neural Network, which is commonly used in dimensionality reduction (unlinear), layer-wise pre-training of deep models, and representation learning. </p>
+        <p>AE consists of an encoder and a decoder, which looks symmetric though don't have to be. AE can learn low-dimensional representations of data (e.g., text, images, audio) in its latent space through reconstructing the inputs (undercomplete autoencoders). But theoretically, size of latent space could exceed that of inputs as long as the model won't turn into an identity function (overcomplete autoencoders).</p>
+        <p>Based on regularization, architecture, and design of objective function, AE could be classified as: <ul>
+          <li>Sparse auto-encoder;</li>
+          <li>Deep auto-encoder;</li>
+          <li>Convolutional auto-encoder;</li>
+          <li>Denoise auto-encoder;</li>
+          <li>...</li>
+          </ul>
+        </p>
+
+        <p class="question">&bull; Variational Auto-Encoder</p>
+        <p>Even though looks similar to other autoencoders above, Variational auto-encoder (VAE) is more a generative model that learns to approximate the distribution of data, generating a continuous latent space via adding noise. How does VAE achieve this?</p>
+        <p>&rarr; A simple prior distribution over latent variables `p(z)`: gaussian or uniform; <br>
+          &rarr; The decoder defines generative part `p_&theta;(x|z)` with a NN model; with encoder approximating the inference part `q_\phi;(z|x)` in same way (encode data into latent distributions to enable random sampling, so called 'Variational'); <br>
+          &rarr; Re-parameterization skill to enable the training; and optimization of lower bound `&Laplacetrf;_(ELBO)` to the likelyhood;</p>
+
+            $$
+            \begin{equation}
+            q_\phi;(z|x)~N(z|&mu;_x, &sigma;_x^2I) &rarr; z=&mu;_x+&sigma;_x&odot;&epsilon;,\quad &epsilon;~N(0, I)
+            \end{equation}
+            $$
+
+            $$
+            \begin{equation}
+            log\ p_&theta;(x)=log\ E_{p(z)} [p_&theta;(x|z)]&ge;-D_{KL}(q_\phi(z|x) &Vert; p(z)) + log\ E_{q_\phi(z|x)} [p_&theta;(x|z)]
+            \end{equation}
+            $$
+
+        <p>Where intuitively the KL divergence squeezes the data towards `N(0, &theta;_i)` to make the posterior `q_\phi(z|x)` approach prior `p(z)`, while the likelyhood pushes the distribution mass away from each other `N(&infin;, 0)`. At some balance point, generative model will obtain the best performance. </p>
+        <p>After training, drop off the encoder, keep the decoder as the generator, draw samples from latent space and feed them to the decoder for generation.</p>
+
+        <p class="question">&bull; Conditional VAE (convolutional)</p>
+        <p>A problem of VAE is that we cannot control the generation. For instance, if we train a VAE with MNIST dataset, then when we draw a sample for generation we have no idea which figure would be produced (it could be any one within 0~9). Fortunately, we have conditional VAE.</p>
+        <p>The principle is quite simple here. Concatenate the condition (e.g., label) with input when encoding and concat the condition with random sample z when decoding. </p>
+
+          $$
+          \begin{equation}
+          &Laplacetrf;_{ELBO}(x|c)=-D_{KL}(q_\phi(z|x,c) &Vert; p(z)) + log\ E_{q_\phi(z|x,c)} [p_&theta;(x|z,c)]
+          \end{equation}
+          $$
+
+        <p>However, how to achieve CVAE when we apply convolutional network? Current solution is that just concat the condition on FC layer after convolution, rather than the input layer.</p>
+
+
+        <p class="question">&bull; Info-VAE: a better objective `(Zhao, Song and Ermon, 2018)`</p>
+        <p>The traditional VAE has two problems. </p>
+        <ul>
+          <li>Considering the adversarial relationship between the KL divergence and likelyhood of the objective function. Evidence shows that the KL divergence is not always strong enough to counter-balance the likelyhood's tendency, leading to a terrible latent space with `&mu;&rarr;&infin;`. </li>
+          <li>When decoder is complex, the mutual information (MI) between `x` and `z` tends to be vanishingly small, namely the generation is not dependent on the input, which undermines the learning (tips: avoid using a complex decoder).</li>
+        </ul>
+        <p>So rewrite the `&Laplacetrf;_(ELBO)` with adding a &lambda; to enhance the weights of KL divergence (counter-acting) and a MI term `I(x;z)` with weight `&alpha;`:</p>
+
+          $$
+          \begin{equation}
+          \begin{split}
+          &Laplacetrf;_{infoVAE}&=-&lambda;D_{KL}(q_\phi(z) &Vert; p(z)) - E_{q_\phi(z)} [D_{KL}(q_\phi(x|z) &Vert; p_&theta;(x|z))] + &alpha;I_q(x;z) \\\\
+          &&equiv;E_{p_D(x)}E_{q_&phi;(z|x)}[log\ p_&theta;(x|z)] - (1-\alpha)E_{p_D(x)}D_{KL}(q_\phi(z|x) \Vert p_\theta(z)) - (\alpha + \lambda - 1)D_{KL}(q_\phi(z) \Vert p_\theta(z))
+          \end{split}
+          \end{equation}
+          $$
+
+        <p class="question">&bull; Semi-supervised VAE</p>
+        <p>The traditional VAE has two problems. </p>
+
+      </div>
+
+      
+  </main>
+
+  <footer>
+    <p>&hearts; Passion is all you need.</p>
+  </footer>
+</body>
+</html>

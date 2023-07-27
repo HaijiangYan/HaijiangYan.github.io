@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VAE-guided MCMCP</title>
+  <link rel="stylesheet" type="text/css" href="../../css/styles.css">
+  <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+<body>
+  <header>
+    <div class="top">
+      <center>
+      <ul class="menu">
+        <li class="first"><a href="https://haijiangyan.github.io/">&LeftArrow; Return Home</a></li>
+      </ul>
+      </center>
+    </div>
+  </header>
+
+  <main>
+
+      <div>
+
+        <h1>Variational AutoEncoder-guided MCMCP</h1>
+        <p class="signature">27/July/2023, Haijiang</p>
+
+        <p class="question">&bull; Markov Chain Monte Carlo with People</p>
+        <p>Markoc Chain Monte Carlo with People (MCMCP) acts as a sampling paradigm to draw samples from human's category representations `p(x|c)` through taking participants as a component (acceptance function) in Metropoli-Hastings sampling process (think about the proposal and acceptance of M-H). When faced to binary choices DM task to decide which one looks more likely to belong to a category than another, human is considered to make the decision following the rule like: $$ \frac{p(x'|c)}{p(x'|c) + p(x|c)} $$ where `x'` and `x` are options, and `p(\cdot|c)` denotes the category representation which is a distribution over a set of objects (like the examplar or prototype model). Because of the similarity between the decision rule and Barker's Acceptance Function `min{1, \frac{p(x')}{p(x')+p(x)}}` for M-H sampling, MCMCP is promised to converge on human's category representation as long as enough samples (i.e., trials) have been drawn.</p>
+
+        <p class="question">&bull; A problem: number of trials needed to get convergence</p>
+        <p>One of the most stand-out drawbacks of MCMCP is that it needs lengthy process to converge on its target distribution, as a result of "random walk" and long burn-in.</p>
+
+        <p class="question">&bull; VAE-guided MCMCP `v1.0`</p>
+        <p>In our first study, we tried to use implicit category knowledge mastered by VAE, a generative model, to guide MCMCP. <a href="../publication/mathpsych.pdf">The basic process and gist could be found in the poster here (MathPsych2023)</a>. In summary, VAE provided:
+          <ul>
+            <li>A compact and informative latent/sample space;</li>
+            <li>Model's category representation that served as another acceptance agent to undertake a large propotion of DMs which should had been done by human agent;</li>
+            <li>Prior information on where the high-density area is, for selection of initial points.</li>
+          </ul>  
+        </p>
+        <p>Results showed that most participants could get convergence in a single session, presenting great potential to identify individual differences on human's category representations and fine-tune deep models with generated data to make them more human-like. However, several issue need to be fixed or improved: 
+        </p>
+
+        $$\begin{array}{c|lll}
+        Issues & Intended\ Solution \\
+        \hline
+        \rm Conditional\ generation\ relied\ on\ category\ clustering\ motivated\ by\ the\ extra\ classifier & \rm Conditional\ VAE \\
+        \rm The\ inaccurate\ calculation\ of\ model's\ category\ representations\ p_{model}(x|c) & \rm InfoVAE \\
+        \rm High\ autocorrelation\ of\ samples\ when\ set\ a\ wide\ proposal\ for\ exploration & \rm Narrow\ proposal\ function\ or \\
+        & \rm new\ sampling\ algorithm \\
+        \rm Without\ facial\ affect\ rating\ to\ prove\ the\ gain\ of\ MCMCP\ from\ VAE & \rm Rate\ the\ faces\ produced \\
+        \rm Fail\ to\ validate\ the\ individual\ differences & \rm Predicition\ trials\ using\ decoded\ \\
+        & \rm faces\ +\ Rate\ fer2013 \\
+        \rm Better\ to\ projected\ the\ latent\ space\ to\ a\ theoretical\ space(arousal/valence) & \rm Grid\ samples\ 2d\ rating \\ 
+        \rm The\ experiment\ is\ too\ long & \rm Reduce\ trials\ to\ 100\ and\ \\ 
+        & \rm upgrade\ the\ backend \\
+        \rm For\ classification,\ happy\ and\ sad\ are\ too\ easy, lead\ to\ a\ high\ baseline  & \rm Add\ neutral\ faces\ in \\ 
+        \end{array}$$ 
+
+      </div>
+
+      
+  </main>
+
+  <footer>
+    <p>&hearts; Passion is all you need.</p>
+  </footer>
+</body>
+</html>
