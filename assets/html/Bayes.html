@@ -1,77 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
   <title>Bayes</title>
-  <link rel="stylesheet" type="text/css" href="../../css/styles.css">
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <script type="text/javascript" src="/script/tep_import.js"></script>
   <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML">
   </script>
 </head>
-<body>
-  <header class="top">
-    <li class="first"><a href="https://haijiangyan.github.io/">&LeftArrow; Return Home</a></li>
-  </header>
 
-  <main>
+<include src="../../template/template.html"></include>
 
-      <div>
+<div class="main">
 
-        <h1>Bayesian Model</h1>
-        <p class="signature">29/July/2023, Haijiang</p>
+  <h1>Bayesian Model</h1>
+  <p class="signature">29/July/2023, Haijiang</p>
 
-        <p class="question">&bull; Bayes Theorem</p>
-        <p>As we know, Bayes theorem is such a simple and elegant story:</p>
-          $$
-            \begin{equation}
-            \begin{split}
-            P(\theta|x) &= \frac{P(x|\theta)P(\theta)}{P(x)} \\\\
-            &= \frac{P(x|\theta)P(\theta)}{\sum^n_{i=1} P(x|\theta_i)P(\theta_i)} \\\\
-            &= [\frac{P(x|\theta)}{P(x)}]P(\theta)
-            \end{split}
-            \end{equation}
-          $$
-        <p>Where `P(\theta|x)` is posterior probability of `\theta` given evidence `x`, `P(x|\theta)` is likelyhood of `\theta` given x, `P(\theta)` denotes the prior probability of `\theta` when given no information, `P(x)` means the marginal probability of the evidence `x`. Thus, the bayes actually tells us a basic principle on how to update the confidence of factor `\theta` when evidence `x` has been observed. Particularly, `\frac{P(x|\theta)}{P(x)}` is also called "standardized likelyhood", which could be viewed as the influence by evidence `x` imposed on `\theta`.</p>
-        
-        <p class="question">&bull; Naive Bayes</p>
-        
-        <p class="question">&bull; Bayesian Network</p>
-        <p>Bayesian networks are a type of probabilistic graphical model that uses Bayesian inference for probability computations. Bayesian networks aim to model conditional dependence, and therefore causation, by representing conditional dependence by edges in a directed graph. Through these relationships, one can efficiently conduct inference on the random variables in the graph through the use of factors.</p>
-        <p>To start with, consider "chain rule of probability":</p>
-          $$
-          \begin{equation}
-          P(\bigcap^n_{k=1}) = \prod^n_{k=1}P(A_k|\bigcap^{k-1}_{j=1}A_j)
-          \end{equation}
-          $$
-        <p>And also, if random variables A and B are independent, then given another variable C, `P(A,B|C)=P(A|C)\astP(B|C)`, or `P(A|B,C)=P(A|C)` that means A has no link with B or the link is completely intermediated by C. </p>
-        <p>Using the relationships specified by our Bayesian network, we can obtain a compact, factorized representation of the joint probability distribution by taking advantage of conditional independence. A Bayesian network is a directed acyclic graph in which each edge corresponds to a conditional dependency, and each node corresponds to a unique random variable. Formally, if an edge `(A, B)` exists in the graph connecting random variables A and B, it means that `P(B|A)` is a factor in the joint probability distribution, so we must know `P(B|A)` for all values of B and A in order to conduct inference.</p>
-        <p>Bayesian networks satisfy the <b>local Markov property</b>, which states that a node is conditionally independent of its non-descendants given its parents. This property allows us to simplify the joint distribution, obtained in the previous section using the chain rule, to a smaller form. After simplification, the joint distribution for a Bayesian network is equal to the product of `P(node|parents(node))` for all nodes, stated below:</p>
-          $$
-          \begin{equation}
-          \begin{split}
-          P(\bigcap^n_{k=1}) &= \prod^n_{k=1}P(A_k|\bigcap^{k-1}_{j=1}A_j) \\\\
-          &=\prod^n_{k=1}P(A_k|parents(A_k))
-          \end{split}
-          \end{equation}
-          $$
+  <div class="text">
+  <p class="question">&bull; Bayes Theorem</p>
+  <p>As we know, Bayes theorem is such a simple and elegant story:</p>
+    $$
+      \begin{equation}
+      \begin{split}
+      P(\theta|x) &= \frac{P(x|\theta)P(\theta)}{P(x)} \\\\
+      &= \frac{P(x|\theta)P(\theta)}{\sum^n_{i=1} P(x|\theta_i)P(\theta_i)} \\\\
+      &= [\frac{P(x|\theta)}{P(x)}]P(\theta)
+      \end{split}
+      \end{equation}
+    $$
+  <p>Where `P(\theta|x)` is posterior probability of `\theta` given evidence `x`, `P(x|\theta)` is likelyhood of `\theta` given x, `P(\theta)` denotes the prior probability of `\theta` when given no information, `P(x)` means the marginal probability of the evidence `x`. Thus, the bayes actually tells us a basic principle on how to update the confidence of factor `\theta` when evidence `x` has been observed. Particularly, `\frac{P(x|\theta)}{P(x)}` is also called "standardized likelyhood", which could be viewed as the influence by evidence `x` imposed on `\theta`.</p>
+  
+  <p class="question">&bull; Naive Bayes</p>
+  
+  <p class="question">&bull; Bayesian Network</p>
+  <p>Bayesian networks are a type of probabilistic graphical model that uses Bayesian inference for probability computations. Bayesian networks aim to model conditional dependence, and therefore causation, by representing conditional dependence by edges in a directed graph. Through these relationships, one can efficiently conduct inference on the random variables in the graph through the use of factors.</p>
+  <p>To start with, consider "chain rule of probability":</p>
+    $$
+    \begin{equation}
+    P(\bigcap^n_{k=1}) = \prod^n_{k=1}P(A_k|\bigcap^{k-1}_{j=1}A_j)
+    \end{equation}
+    $$
+  <p>And also, if random variables A and B are independent, then given another variable C, `P(A,B|C)=P(A|C)\astP(B|C)`, or `P(A|B,C)=P(A|C)` that means A has no link with B or the link is completely intermediated by C. </p>
+  <p>Using the relationships specified by our Bayesian network, we can obtain a compact, factorized representation of the joint probability distribution by taking advantage of conditional independence. A Bayesian network is a directed acyclic graph in which each edge corresponds to a conditional dependency, and each node corresponds to a unique random variable. Formally, if an edge `(A, B)` exists in the graph connecting random variables A and B, it means that `P(B|A)` is a factor in the joint probability distribution, so we must know `P(B|A)` for all values of B and A in order to conduct inference.</p>
+  <p>Bayesian networks satisfy the <b>local Markov property</b>, which states that a node is conditionally independent of its non-descendants given its parents. This property allows us to simplify the joint distribution, obtained in the previous section using the chain rule, to a smaller form. After simplification, the joint distribution for a Bayesian network is equal to the product of `P(node|parents(node))` for all nodes, stated below:</p>
+    $$
+    \begin{equation}
+    \begin{split}
+    P(\bigcap^n_{k=1}) &= \prod^n_{k=1}P(A_k|\bigcap^{k-1}_{j=1}A_j) \\\\
+    &=\prod^n_{k=1}P(A_k|parents(A_k))
+    \end{split}
+    \end{equation}
+    $$
 
-        <p>For <b>inference</b>, Bayesian network can come in two forms.</p>
+  <p>For <b>inference</b>, Bayesian network can come in two forms.</p>
 
-        <p class="question">&bull; Bayesian Hierarchical Model</p>
+  <p class="question">&bull; Bayesian Hierarchical Model</p>
 
-        <p>BHM is a complete model of the data to account for uncertainty, including systematic error, selection effects and almost everything. Often used to learn about a population from many individual measurements (observables). </p>
+  <p>BHM is a complete model of the data to account for uncertainty, including systematic error, selection effects and almost everything. Often used to learn about a population from many individual measurements (observables). </p>
 
-        <p class="question">&bull; Bayesian Optimization</p>
+  <p class="question">&bull; Bayesian Optimization</p>
 
-        <p class="question">&bull; Bayesian Deep Learning</p>
+  <p class="question">&bull; Bayesian Deep Learning</p>
 
-      </div>
+  </div>
+  
+</div>
 
-      
-  </main>
+<footer>
+  <p>&hearts; Passion is all you need.</p>
+</footer>
 
-  <footer>
-    <p>&hearts; Passion is all you need.</p>
-  </footer>
 </body>
 </html>

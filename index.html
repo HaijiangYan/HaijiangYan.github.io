@@ -1,138 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
   <title>Haijiang_website</title>
-  <link rel="stylesheet" type="text/css" href="./css/styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script type="text/javascript" src="script/tep_import.js"></script>
 </head>
 
-<body>
-  <header class="navigator">
+<include src="template/template.html"></include>
 
-    <li class="first home"><a href="https://haijiangyan.github.io/"><strong>➲HOME</strong></a></li>
+<div class="main">
 
-    <li class="first">
-      <a href="#">BLOGS</a>
-        <ul class="box">
-          <li class="second"><a href="assets/html/hamiltonian MCMC.html">MCMC</a></li>
-          <li class="second"><a href="./assets/html/VAE.html">VAE</a></li>
-          <li class="second"><a href="#">GAN</a></li>
-          <li class="second"><a href="#">MDS</a></li>
-          <li class="second"><a href="./assets/html/Bayes.html">Bayes</a></li>
-        </ul>
-    </li>
+  <h1>Welcome to my website!</h1>
 
-    <li class="first">
-      <a href="#">RESEARCH</a>
-        <ul class="box">
-          <li class="second"><a href="/assets/html/VGM.html">Guided MCMCP</a></li>
-          <li class="second"><a href="/assets/html/HLDL.html">Human-like AI</a></li>
-        </ul>
-    </li>
-
-    <li class="first">
-      <a href="#">THOUGHTS</a>
-        <ul class="box">
-          <li class="second"><a href="#">updating...</a></li>
-        </ul>
-    </li>
-
-    <li class="first">
-      <a href="#">CONTACT</a>
-        <ul class="box">
-          <li class="second"><a href="#">updating...</a></li>
-        </ul>
-    </li>
-
-    <li class="first">
-      <a href="https://github.com/HaijiangYan/HaijiangYan.github.io">GITHUB</a>
-    </li>
-
-    <li class="first">
-      <a href="https://github.com/HaijiangYan/HaijiangYan.github.io">USEFUL-LINKS</a>
-    </li>
-          
-  </header>
-<hr style="opacity: 0.4;">
-<br><br>
-<hr style="opacity: 0.4;">
-<!-- <br> -->
-  <main>
-
-  <div class="side">
-
-    <div class="sidebar">
-      <h2 style="font-size: 24pt; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">HAIJIANG YAN (Mr.)</h2>
-      <p style="font-size: 10pt;">ENTJ | web developer | deeplearning tuner | steam gamer | rookie kaggler | Bayes | full scholarship holder | dream of starting a business and raising a cat</p>
-    </div>
-
-    <hr style="opacity: 0.4;">
-
-    <div class="sidenav">
-
-      <p style="font-weight: 400;">Blogs</p>
-      <p style="font-weight: 400;">Research</p>
-      <p style="font-weight: 400;">Thoughts</p>
-      <p style="font-weight: 400;">Contact</p>
-      <p style="font-weight: 400;"><a href="https://sampling.warwick.ac.uk/">Our Lab</a></p>
-
-      <a href="#" class="fa fa-facebook"></a>
-      <a href="#" class="fa fa-instagram"></a>
-      <a href="#" class="fa fa-google"></a>
+    <div class="text">
+    <h2>About me</h2>
+    <p>Currently a PhD student at <a href="https://warwick.ac.uk/fac/sci/psych/">Department of Psychology, the University of Warwick</a>.</p>
+    <p>My research topics could be roughly summarized as "interfacing human cognition and behaviour with machine learning (particularly deep learning) models", which involve several interesting fields including computational modelling in Psychology, Bayesian, computer vision and representation learning. I'm so much into this project, with full of motivation and passion. You can enter the Research section for more details if you wish. </p>
+    <p>The main purposes I built this website are to (1) develop a corner of thoughts, ideas, practical techniques and literature notes for review and sharing; (2) update current progress of my project; and (3) give myself a sense of rituality in accomplishment of my work. </p>
+    <p><a href="./assets/CV.pdf">CV</a> is here!</p>
 
     </div>
-
-    <hr style="opacity: 0.4;">
-
-    <div class="tags">
-
-      <p> GMT <span id="time" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> </span>
-
-    </div>
-
-  </div>
   
-  <div class="main">
+</div>
 
-      <h1>Welcome to my website!</h1>
+<footer>
+  <p>&copy; 2023 Personal Website. All rights reserved.</p>
+</footer>
 
-      <div draggable=false class="container">
-
-        <div class="text">
-        <h2>About me</h2>
-        <p>Currently a PhD student at <a href="https://warwick.ac.uk/fac/sci/psych/">Department of Psychology, the University of Warwick</a>.</p>
-        <p>My research topics could be roughly summarized as "interfacing human cognition and behaviour with machine learning (particularly deep learning) models", which involve several interesting fields including computational modelling in Psychology, Bayesian, computer vision and representation learning. I'm so much into this project, with full of motivation and passion. You can enter the Research section for more details if you wish. </p>
-        <p>The main purposes I built this website are to (1) develop a corner of thoughts, ideas, practical techniques and literature notes for review and sharing; (2) update current progress of my project; and (3) give myself a sense of rituality in accomplishment of my work. </p>
-        <p><a href="./assets/CV.pdf">CV</a> is here!</p>
-        </div>
-
-        <!-- <div class="img">
-        <img src="./assets/imgs/hhx.JPG" alt="Photo"/>
-        <ul, style="text-align: center; list-style: none;">
-          <li>Email: haijiang.yan@warwick.ac.uk</li>
-          <li><a href="./assets/CV.pdf">CV</a> is here!</li>
-        </ul>
-        </div> -->
-
-      </div>
-      
-    </div>
-  </main>
-
-  <footer>
-    <p>&copy; 2023 Personal Website. All rights reserved.</p>
-  </footer>
-</body>
 </html>
 
-<script>
 
-function refreshTime() {
-  const timeDisplay = document.getElementById("time");
-  const dateString = new Date().toLocaleString();
-  const formattedString = dateString.replace(", ", "-");
-  timeDisplay.textContent = formattedString;
-}
-  setInterval(refreshTime, 1000);
-</script>
