@@ -2,9 +2,11 @@
 <html lang="en">
 
 <head>
-  <title>Bayes</title>
+  <title>Default</title>
   <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
   <script type="text/javascript" src="/script/tep_import.js"></script>
+  <script type="text/javascript" src="/script/side_nav.js"></script>
   <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML">
   </script>
@@ -12,13 +14,32 @@
 
 <include src="../../template/template.html"></include>
 
+<div class="side">
+
+  <div class="sidebar">
+    <h2 style="font-size: 24pt;">HAIJIANG YAN</h2>
+    <p style="font-size: 10pt;">ENTJ</p>
+  </div>
+
+  <hr style="opacity: 0.4;">
+
+  <div class="sidenav"></div>
+
+  <div class="time">
+
+    <p> GMT <span id="time" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> </span>
+
+  </div>
+
+</div>
+
 <div class="main">
 
   <h1>Bayesian Model</h1>
   <p class="signature">29/July/2023, Haijiang</p>
 
   <div class="text">
-  <p class="question">&bull; Bayes Theorem</p>
+  <h2 class="question">&bull; Bayes Theorem</h2>
   <p>As we know, Bayes theorem is such a simple and elegant story:</p>
     $$
       \begin{equation}
@@ -31,9 +52,9 @@
     $$
   <p>Where `P(\theta|x)` is posterior probability of `\theta` given evidence `x`, `P(x|\theta)` is likelyhood of `\theta` given x, `P(\theta)` denotes the prior probability of `\theta` when given no information, `P(x)` means the marginal probability of the evidence `x`. Thus, the bayes actually tells us a basic principle on how to update the confidence of factor `\theta` when evidence `x` has been observed. Particularly, `\frac{P(x|\theta)}{P(x)}` is also called "standardized likelyhood", which could be viewed as the influence by evidence `x` imposed on `\theta`.</p>
   
-  <p class="question">&bull; Naive Bayes</p>
+  <h2 class="question">&bull; Naive Bayes</h2>
   
-  <p class="question">&bull; Bayesian Network</p>
+  <h2 class="question">&bull; Bayesian Network</h2>
   <p>Bayesian networks are a type of probabilistic graphical model that uses Bayesian inference for probability computations. Bayesian networks aim to model conditional dependence, and therefore causation, by representing conditional dependence by edges in a directed graph. Through these relationships, one can efficiently conduct inference on the random variables in the graph through the use of factors.</p>
   <p>To start with, consider "chain rule of probability":</p>
     $$
@@ -55,13 +76,13 @@
 
   <p>For <b>inference</b>, Bayesian network can come in two forms.</p>
 
-  <p class="question">&bull; Bayesian Hierarchical Model</p>
+  <h2 class="question">&bull; Bayesian Hierarchical Model</h2>
 
   <p>BHM is a complete model of the data to account for uncertainty, including systematic error, selection effects and almost everything. Often used to learn about a population from many individual measurements (observables). </p>
 
-  <p class="question">&bull; Bayesian Optimization</p>
+  <h2 class="question">&bull; Bayesian Optimization</h2>
 
-  <p class="question">&bull; Bayesian Deep Learning</p>
+  <h2 class="question">&bull; Bayesian Deep Learning</h2>
 
   </div>
   
@@ -73,3 +94,16 @@
 
 </body>
 </html>
+
+<script>
+  document.title = "Bayes"
+
+  document.getElementsByClassName("sidebar")[0].getElementsByTagName("h2")[0].innerHTML 
+  = "Blogs"  //page title
+
+  document.getElementsByClassName("sidebar")[0].getElementsByTagName("p")[0].innerHTML 
+  = "Bayesian Modelling"  //page description
+
+  side_nav()
+
+</script>
