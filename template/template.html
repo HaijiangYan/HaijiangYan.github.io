@@ -3,62 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <title>default</title>
+
+  <script src="/script/jquery.min.js"></script>
+  <script src="/script/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
   <link rel="stylesheet" type="text/css" href="/css/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-  <header class="navigator">
 
-    <li class="first home"><a href="https://haijiangyan.github.io/"><strong>➲HOME</strong></a></li>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid"> 
 
-    <li class="first">
-      <a href="#">BLOGS</a>
-        <ul class="box">
-          <li class="second"><a href="/assets/html/hamiltonian MCMC.html">MCMC</a></li>
-          <li class="second"><a href="/assets/html/VAE.html">VAE</a></li>
-          <li class="second"><a href="#">GAN</a></li>
-          <li class="second"><a href="#">MDS</a></li>
-          <li class="second"><a href="/assets/html/Bayes.html">Bayes</a></li>
+      <div class="navbar-header">
+        <a class="navbar-brand" href="https://haijiangyan.github.io/" style="color: black;"><strong>➲HOME</strong></a>
+      </div>
+
+      <div>
+        <ul class="nav navbar-nav">
+        <li class="dropdown"><a href="#" style="color: black;" class="dropdown-toggle" data-toggle="dropdown">BLOGS<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="/assets/html/MCMC.html">MCMC</a></li>
+              <li><a href="/assets/html/VAE.html">VAE</a></li>
+              <li><a href="#">GAN</a></li>
+              <li class="divider"></li>
+              <li><a href="#">MDS</a></li>
+              <li><a href="/assets/html/Bayes.html">Bayes</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown"><a href="#" style="color: black;" class="dropdown-toggle" data-toggle="dropdown">RESEARCH<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="/assets/html/VGM.html">MCMCP</a></li>
+              <li><a href="/assets/html/VGM.html">Sampling</a></li>
+              <li><a href="/assets/html/HLDL.html">AI domain</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown"><a href="#" style="color: black;" class="dropdown-toggle" data-toggle="dropdown">THOUGHTS<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">updating...</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown"><a href="#" style="color: black;" class="dropdown-toggle" data-toggle="dropdown">USEFUL-LINKS<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="https://sampling.warwick.ac.uk/">Our Lab</a></li>
+            <li><a href="/assets/CV.pdf">CV</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#" class="dropdown-toggle" style="color: black;">CONTACT</a>
+        </li>
+
+        <li>
+          <a class="dropdown-toggle" href="https://github.com/HaijiangYan/HaijiangYan.github.io" style="color: black;">GITHUB</a>
+        </li>
+
+        <li>
+          <a href="#" style="color: black;">&nbsp; &nbsp; &nbsp; &nbsp; GMT <span id="time"> </span></a>
+        </li>
+
         </ul>
-    </li>
-
-    <li class="first">
-      <a href="#">RESEARCH</a>
-        <ul class="box">
-          <li class="second"><a href="/assets/html/VGM.html">MCMCP</a></li>
-          <li class="second"><a href="/assets/html/VGM.html">Sampling</a></li>
-          <li class="second"><a href="/assets/html/HLDL.html">AI domain</a></li>
-        </ul>
-    </li>
-
-    <li class="first">
-      <a href="#">THOUGHTS</a>
-        <ul class="box">
-          <li class="second"><a href="#">updating...</a></li>
-        </ul>
-    </li>
-
-    <li class="first">
-      <a href="#">CONTACT</a>
-        <ul class="box">
-          <li class="second"><a href="#">updating...</a></li>
-        </ul>
-    </li>
-
-    <li class="first">
-      <a href="https://github.com/HaijiangYan/HaijiangYan.github.io">GITHUB</a>
-    </li>
-
-    <li class="first">
-      <a href="#">USEFUL-LINKS</a>
-    </li>
+      </div>
           
-  </header>
-<hr style="opacity: 0.4;">
-<br><br>
-<hr style="opacity: 0.4;">
-<!-- <br> -->
+    </div>
+  </nav>
   
 </body>
 </html>
@@ -72,4 +85,5 @@ function refreshTime() {
   timeDisplay.textContent = formattedString;
 }
   setInterval(refreshTime, 1000);
+
 </script>

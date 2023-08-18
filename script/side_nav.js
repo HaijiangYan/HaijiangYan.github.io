@@ -37,7 +37,7 @@
   //页面滚动为导航添加样式
   $(window).scroll(function () {
       for (let i = 0; i < a.length; i++) {
-          if ($(window).scrollTop() > $('#' + a[i]).offset().top - 10 || $(this).scrollTop() + $(this).height() == $(document).height()) {
+          if ($(window).scrollTop() > $('#' + a[i]).offset().top - 81 || $(this).scrollTop() + $(this).height() == $(document).height()) {
               $('.sidenav').find('li').eq(i).addClass('active').siblings('li').removeClass('active');
               $('.j-bj').css('top', i * 44)
           }
@@ -47,7 +47,7 @@
   let $root = $('html, body');
   $('.sidenav li a').on("click", function () {
       $root.animate({
-          scrollTop: $($.attr(this, 'href')).offset().top - 8
+          scrollTop: $($.attr(this, 'href')).offset().top - 80
       }, 500);
       return false
   });
