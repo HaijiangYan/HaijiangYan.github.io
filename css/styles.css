@@ -28,20 +28,24 @@ width: 1000px;
 .navbar {
   position: fixed;
   width: 1000px;
-  background-color: #ADC4CE;
+  background-color: #66BFBF;
   z-index: 999;
 }
 
 .dropdown-toggle {
-  font-size: 16px;
+  font-size: 15px;
 }
+
+/* .dropdown-toggle:hover {
+  color: #66BFBF;
+} */
 
 li {
 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .side{
-  margin-top: 260px;
+  margin-top: 60px;
   width: 200px;
   display: inline-block;
   vertical-align: top;
@@ -49,7 +53,6 @@ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   /* box-shadow: 2px #4F709C; */
   /* background-color: #ADC4CE; */
   border-radius: 4px;
-  background-color: #ADC4CE;
   padding: 10px 20px;
 }
 
@@ -71,7 +74,7 @@ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   border: 2px solid #f5efe7a8; */
 }
 
-.sidenav, .sidenav_{
+.sidenav_, .sidenav{
   /* text-align: center; */
   /* margin-left: 25px; */
   margin-top: 0pt;
@@ -126,19 +129,19 @@ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 .fa-facebook {
   background: #ffffff;
   color: rgb(0, 0, 0);
-  background-color: #ADC4CE;
+  /* background-color: #ADC4CE; */
 }
 
 .fa-instagram {
   background: #ffffff;
   color: rgb(0, 0, 0);
-  background-color: #ADC4CE;
+  /* background-color: #ADC4CE; */
 }
 
 .fa-google {
   background: #ffffff;
   color: rgb(0, 0, 0); 
-  background-color: #ADC4CE;
+  /* background-color: #ADC4CE; */
 }
 
 .main {
@@ -219,4 +222,5 @@ clear: both;
 position: fixed;
 width: 1000px;
 bottom: 0;
+/* border: 1px solid #000000; */
 }
